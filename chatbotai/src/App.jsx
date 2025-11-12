@@ -2,18 +2,26 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Verify from "./pages/Verify"
-
+import { useUser } from "./context/UserContext"
+import { LoadingBig } from "./component/Loading"
 
 const App = () => {
+
+  const { user, isAuth, loading } = useUser();
+
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/verify" element={<Verify />}/>
-        </Routes>
-      </BrowserRouter>
+      {loading ? ( <LoadingBig /> ) : 
+      (
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={ isAuth ? <Home /> : <Login />}/>
+            <Route path="/login" element={ isAuth ? <Home /> : <Login />}/>
+            <Route path="/verify" element={ isAuth ? <Home /> : <Verify />}/>
+          </Routes>
+        </BrowserRouter>
+      )
+      }
     </>
   )
 }

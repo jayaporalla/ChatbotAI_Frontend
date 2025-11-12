@@ -1,12 +1,17 @@
 import { useState } from "react";
+import { useUser } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import { Loading } from "../component/Loading";
 
 const Verify = () => {
 
   const [otp, setOtp] = useState("");
+  const { verifyUser, btnLoading } = useUser();
+  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(otp);
+    verifyUser(otp, navigate);
   }
 
   return (
@@ -24,7 +29,7 @@ const Verify = () => {
           placeholder="Enter your OTP..."  
           required/>
         </div>
-        <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Submit</button>
+        <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700" disabled={btnLoading}>{btnLoading ? <Loading /> : "Submit"}</button>
       </form>
     </div>
   );

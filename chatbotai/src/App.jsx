@@ -7,7 +7,7 @@ import { LoadingBig } from "./component/Loading"
 
 const App = () => {
 
-  const { user, isAuth, loading } = useUser();
+  const { isAuth, loading } = useUser();
 
   return (
     <>

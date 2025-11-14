@@ -2,16 +2,18 @@ import { useState } from "react";
 import { useUser } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../component/Loading";
+import { useChat } from "../context/ChatContext";
 
 const Verify = () => {
 
   const [otp, setOtp] = useState("");
   const { verifyUser, btnLoading } = useUser();
+  const { fetchChats } = useChat();
   const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    verifyUser(otp, navigate);
+    verifyUser(otp, navigate, fetchChats);
   }
 
   return (

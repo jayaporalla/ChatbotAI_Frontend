@@ -10,6 +10,14 @@ const Sidebar = ({ isOpen, toogleSidebar }) => {
 
       <div className="text-2xl font-semibold mb-6">Chatbot</div>
 
+      <div></div>
+
+      <div className="mb-4">
+        <button className="w-full py-2 bg-gray-700 hover:bg-gray-600 rounded">New Chat +</button>
+      </div>
+
+      <div>Recent Chat</div>
+
       <div className="absolute bottom-0 mb-6 w-full">
         <button className="bg-red-600 text-white text-xl px-3 py-2 rounded-md hover:bg-red-700">Logout</button>
       </div>

@@ -1,7 +1,16 @@
+import { useChat } from "../context/ChatContext";
+
 const Header = () => {
+  const { chats } = useChat();
+
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <p className="text-center text-2xl">Hello, How Can I help you today?</p>
+    <div>
+      <p className="text-lg mb-6">Hello, How Can I help you today?</p>
+      {
+        chats && chats.length === 0 && (
+          <p className="text-lg mb-6">Create new chat to continue</p>
+        )
+      }
     </div>
   )
 }
